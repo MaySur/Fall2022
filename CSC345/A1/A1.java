@@ -33,6 +33,9 @@ public class A1 {
 	public static int WHITESPACE =-1;
 	public static int EOF =-3;	
 	public static int UNKNOWN = -2;
+	public static String str="";
+	public static String dstr ="";
+	public static float flt =0;
 	
 	
 	public static void main(String[] args) {
@@ -40,7 +43,6 @@ public class A1 {
 			// Do NOT make any changes to the following TWO lines
 			File file = new File(args[0]);		
 			Scanner sc = new Scanner(file);		//*** Do not make any other Scanners ***//
-			
 			// *** NOTE ***
 			// For this assignment, you are NOT allowed to use any member methods of 
 			// class java.util.Scanner except hasNextLine and nextLine.  
@@ -48,12 +50,27 @@ public class A1 {
 			// hasNextDouble and nextDouble for this assignment.  			
 			// Students -- Your code and methods calls go here
 
-			String str="";
+			
 			// while (sc.hasNextLine()) str = sc.nextLine();
             while(sc.hasNextLine()) {
                 str += sc.nextLine();
-            }	
-            
+            }
+			/* 
+            Pattern pat = Pattern.compile("[0-9]+\\.+?[0-9]*");
+			Pattern pat1 = Pattern.compile("[0-9]+\\.?[0-9]+");
+            Matcher m = pat.matcher(str);
+			Matcher m1 = pat1.matcher(str);
+			 if(m1.find()){
+				flt = Float.parseFloat(m1.group());
+				charClass = DECIMAL;
+			 } else if (m.find()){
+				flt = Float.parseFloat(m.group());
+				charClass = DECIMAL;
+			 }
+			 String s = flt+"";
+            str = str.replace(s, "");
+*/
+
 			str = str.replaceAll("[\n\t ]*", " ");
 
 			lexLen = str.length();
@@ -61,10 +78,11 @@ public class A1 {
 			
 			int i=0;
 			while(i <=str.length()){
-				getChar();
 				lex();
 				i++;
 			}
+
+
 			
 			
 			sc.close();
@@ -115,6 +133,8 @@ public class A1 {
 
 
 		public static void lex(){
+			getChar();
+
 			try{			
 			switch(charClass){
 				case 3:
@@ -130,8 +150,9 @@ public class A1 {
 				if(lexeme [0] == '=') charClass =ASSIGN;
 				else if(lexeme[0] == '+') charClass =PLUS;
 				else if(lexeme [0] == '-') charClass = MINUS;
-				else if(lexeme [0] == '.') charClass = DECIMAL;
-				System.out.println("Next token is: "+charClass+", Next lexeme is "+lexeme[0]);
+				//else if(lexeme [0] == '.') charClass = DECIMAL;
+				System.out.println("Next token is: "+charClass+", Next lexeme is "+lexeme[0]
+				);
 				getC();
 				break;
 				case -1:
@@ -139,6 +160,29 @@ public class A1 {
 				break;
 
 				case 7:
+				str = String.valueOf(lexeme);
+				
+
+				Pattern pat = Pattern.compile("[0-9]+\\..+?[0-9]*");
+				Matcher m = pat.matcher(str);
+				Pattern pat1 = Pattern.compile("[0-9]+\\.?[0-9]*");
+				Matcher m1 = pat1.matcher(str);
+
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 				charClass =INUM;
 				System.out.println("Next token is: "+charClass+", Next lexeme is "+lexeme[0]);
 				getC();
@@ -147,7 +191,10 @@ public class A1 {
 				case -3:
 				charClass=EOF;
 				System.out.println("Next token is: "+charClass+", Next lexeme is "+lexeme[0]);
-				break;		
+				break;
+				case 9:
+				charClass=FNUM;
+				System.out.println("Next token is: "+charClass+", Next lexeme is "+flt);
 				
 			
 			}
@@ -155,5 +202,19 @@ public class A1 {
 			catch(ArrayIndexOutOfBoundsException e){
 			
 		}
+		}
+
+		public static void decimal(){
+		Pattern pat = Pattern.compile("[0-9]+\\.?[0-9]+");
+        Matcher m = pat.matcher(str);
+
+        while (m.find()){
+        flt = Float.parseFloat(m.group());
+        }
+		charClass = FNUM;
+		dstr = flt+"";
+
+
+
 		}
 }
