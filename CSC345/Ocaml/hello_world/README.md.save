@@ -1,0 +1,7 @@
+# **OCAML GUIDE**
+## 1.  Install: 
+* Install on Ubuntu Server
+`sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install ocaml-interp
+```
