@@ -1,4 +1,5 @@
 # **OCAML GUIDE**
+(Ocaml Manual)[https://v2.ocaml.org/manual/expr.html#ss%3Aexpr-operators]
 ## 1. Install: 
 * Ubuntu
 ```
