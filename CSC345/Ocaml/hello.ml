@@ -1,2 +1,5 @@
-let dividesEvenlyByThree : int -> bool = fun x -> if (x mod 3 ==0) then true else false;;
-dividesEvenlyByThree 3;;
+let third : 'a -> 'a -> 'a -> 'a -> 'a = fun w x y z -> if w > x && w > y && w > z then  
+                                                        else if x > y && x > z then 
+                                                        else if y > z then
+                                                        else  
+
