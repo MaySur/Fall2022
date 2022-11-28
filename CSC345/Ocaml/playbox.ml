@@ -1,9 +1,11 @@
-let third x y z = let smallest x y z = if (x < y && x < z) then x else if (y < z) then y else z in 
-                                       if(x != smallest x y z && y != smallest x y z) then (x * x) + (y * y)
-                                       else if(z != smallest x y z && y != smallest x y z) then (z * z) + (y * y)
-                                       else (z * z) + (x * x);;  
-third  1 2 3;;
-third  2 1 3;;
-third  2 3 1;;
-
-third  3 2 1;;
+let letterGrade : int -> string = fun x -> let a x = if (x >=98 && x <= 100) then "A"
+          else if (x >=90 && x < 93) then "A-"
+          else if (x >=87 && x < 90) then "B+"
+          else if (x >=83 && x < 87) then "B"
+          else if (x >=80 && x < 83) then "B-"
+          else if (x >=77 && x < 80) then "C+"
+          else if (x >=73 && x < 77) then "C"
+          else if (x >=70 && x < 73) then "C-"
+          else if (x >=67 && x < 70) then "D+"
+          else if (x >=63 && x < 67) then "D"
+          else if (x >=60 && x < 63) then "D-" else "F";;
