@@ -72,7 +72,7 @@ let ceilingDecimal : float -> int = fun x -> if (x = float_of_int(int_of_float(x
 		F				< 60
 
       For example, letterGrade 91;; returns A- *)
-let letterGrade : int -> string = fun x -> if (x >=98 && x <= 100) then "A"
+let letterGrade : int -> string = fun x -> if (x >=93 && x <= 100) then "A"
                                                      else if (x >=90 && x < 93) then "A-"
                                                      else if (x >=87 && x < 90) then "B+"
                                                      else if (x >=83 && x < 87) then "B"
@@ -85,7 +85,7 @@ let letterGrade : int -> string = fun x -> if (x >=98 && x <= 100) then "A"
                                                      else if (x >=60 && x < 63) then "D-"
                                                      else "F";;
 
-
+letterGrade (93);;
 (* 8. Write function "findDays" that returns the number of days in a month. 
       The function takes in as input an integer representing a month, and outputs the
       number of days.  You can assume that February has 28 days.
