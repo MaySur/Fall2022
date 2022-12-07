@@ -1,11 +1,8 @@
-let letterGrade : int -> string = fun x -> let a x = if (x >=98 && x <= 100) then "A"
-          else if (x >=90 && x < 93) then "A-"
-          else if (x >=87 && x < 90) then "B+"
-          else if (x >=83 && x < 87) then "B"
-          else if (x >=80 && x < 83) then "B-"
-          else if (x >=77 && x < 80) then "C+"
-          else if (x >=73 && x < 77) then "C"
-          else if (x >=70 && x < 73) then "C-"
-          else if (x >=67 && x < 70) then "D+"
-          else if (x >=63 && x < 67) then "D"
-          else if (x >=60 && x < 63) then "D-" else "F";;
+let orderTriple : int * int * int -> int * int * int = fun (x, y, z) -> 
+        if (x < y) && (y < z) then (x, y, z) else
+        if (x < z) && (z < y) then (x, z, y) else
+        if (y < x) && (x < z) then (y, x, z) else
+        if (y < z) && (z < x) then (y, z, x) else
+        if (z < x) && (x < y) then (z, x, y) else (z, y, x);;
+
+        orderTriple (3, 2, 1);;
